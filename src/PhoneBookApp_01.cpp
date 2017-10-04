@@ -8,6 +8,7 @@
 //============================================================================
 
 #include <iostream>
+#include "Contact.h"
 using namespace std;
 
 int main() {
