@@ -4,19 +4,21 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 #include <iostream>
+#include <string>
+//#include "Contact.cpp"
 using namespace std;
 
 
 class Contact{
-	char Name;
+	string Name;
 	int Phone;
 public:
 	// default constructor
-	Contact(){};
+	//Contact(){};
 	// Make new constructor
-	Contact(char, int);
+	Contact(string name, int phone);
 	// OVERLAOD the << operator to print Contacts
-	friend ostream& operator<< (ostream& os, const Contact& c);
+	friend ostream& operator<< (ostream& os, /*const*/ Contact& c);
 };
 
 

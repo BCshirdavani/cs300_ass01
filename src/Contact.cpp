@@ -3,12 +3,13 @@
 
 #include "Contact.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 //======================================================
 // define the overloaded << operator
 //======================================================
-ostream& operator<<(ostream& os, const Contact& c){
+ostream& operator<<(ostream& os, /*const*/ Contact& c){
 	os << c.Name << " " << c.Phone << endl;
 	return os;
 }
@@ -16,8 +17,10 @@ ostream& operator<<(ostream& os, const Contact& c){
 //======================================================
 // define the new constructor
 //======================================================
-Contact::Contact(char name, int phone){
+
+Contact::Contact(string name, int phone){
 	Name = name;
 	Phone = phone;
 }
+
 

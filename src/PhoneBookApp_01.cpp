@@ -15,6 +15,9 @@ int main() {
 
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 
+	// MANUAL test of Contact class
+	Contact cont1("Jason Statham", 12345);
+	cout << "test overloaded stream op. Contact class: " << cont1 << endl;
 
 	return 0;
 }
