@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Book.cpp \
 ../src/Contact.cpp \
 ../src/PhoneBookApp_01.cpp 
 
 OBJS += \
+./src/Book.o \
 ./src/Contact.o \
 ./src/PhoneBookApp_01.o 
 
 CPP_DEPS += \
+./src/Book.d \
 ./src/Contact.d \
 ./src/PhoneBookApp_01.d 
 

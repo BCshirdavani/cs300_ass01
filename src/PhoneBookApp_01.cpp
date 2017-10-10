@@ -7,47 +7,94 @@
 //					assignment 01
 //============================================================================
 
+//  main.cpp
+//  ass01_xcode
+
+#include "Contact.h"
+#include "Book.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "Contact.h"
+#include <cstdlib>
+#include <stdio.h>
+#include <string.h>
+#include <fstream>
 using namespace std;
+
 
 int main() {
 
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-
-	// MANUAL test of Contact class
-	Contact cont1("Jason Statham", 12345);
-	cout << "test overloaded stream op. Contact class: " << cont1 << endl;
-
-	// MANUAL test of read file INPUT
-	// read lines manually put text into array of strings
-	// each row gets string array element
-	cout << "About to test the file import to string array" << endl;
-	ifstream infile("phonebook.txt");
-	if (!infile)
-	{
-		cout << "cannot find phonebook.txt" << endl;
-	}
-	string strARRAY[151430];
-	string first;
-	string last;
-	string num;
-	int count = 0;
-	for (int i =0; i < 10; i++)
-	{
-		getline(infile, first, ' ');
-		getline(infile, last, ' ');
-		getline(infile, num);
-		cout << "first: " << first << " last: " << last << " num: " << num;
-	}
-
-	infile.close();
+    int BookSize = 151425;
+    ifstream filenameIN2("/Users/shymacbook/Documents/BC/cs300_DataStructures/ass01/xCode/ass01_xcode/phonebook.txt");
+    if (!filenameIN2)
+    {
+        cout << "cannot find file" << endl;
+    }
+    Book PhoneBook(BookSize,filenameIN2);
 
 
-	cout << "end from Eclipse edit..." << endl;
+    cout << "WELCOME TO BEAU's PHONEBOOK APPLICATION" << endl;
+    cout << "***MY PHONEBOOK APPLICATION***" << endl;
 
-	return 0;
+    char selection;
+    while (selection != 'Q')
+    {
+        cout << endl << "Please choose an operation:" << endl;
+        cout << "A (Add) | S (Search) | D (Delete) | L (List) | Q (Quit): " ;
+        cout << selection << endl;
+        cin >> selection;
+        //getline(cin, selection);
+        cout << selection << endl;
+
+        string nameADD;
+        string phoneADD;
+        if (selection == 'A')
+        {
+            cin.clear();
+            cin.ignore();
+            cout << "Enter name to add: ";
+            cin >> nameADD;
+            cin.clear();
+            cin.ignore();
+            cout << "Enter number to add: ";
+            cin >> phoneADD;
+            cin.clear();
+            cin.ignore();
+            PhoneBook.addContact(nameADD, phoneADD);
+        }
+        else if (selection == 'S')
+        {
+            cin.clear();
+            cin.ignore();
+            string searchNAME;
+            cout << "enter a full name to search for:";
+            getline(cin, searchNAME);
+            //cout << endl << "...searching for " << searchNAME << endl;
+            //cin. >> searchNAME;
+            cout << "Phone Number: " << PhoneBook.CONTACTarr[PhoneBook.searchContacts(searchNAME)].getNumber();
+        }
+        else if (selection == 'D')
+        {
+            cin.clear();
+            cin.ignore();
+            string deleteNAME;
+            cout << "Enter a full name to delete:";
+            getline(cin, deleteNAME);
+            cout << "deleting " << deleteNAME << endl;
+            //cin >> deleteNAME;
+            PhoneBook.deleteContact(PhoneBook.searchContacts(deleteNAME));
+        }
+        else if (selection == 'L')
+        {
+            PhoneBook.listContacts();
+        }
+        //else break;
+    }
+
+
+    cout << "Good Bye" << endl;
+
+
+return 0;
 }
